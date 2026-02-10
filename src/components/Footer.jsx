@@ -1,22 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const videoRef = useRef(null);
-
-  // Video Autoplay Logic
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video.play().catch((error) => {
-        console.error("Video play failed:", error);
-      });
-    }
-  }, []);
 
   return (
-    // ADJUSTMENT 1: Adjusted top padding (pt-16 on mobile vs pt-24 on desktop)
+    // ADJUSTMENT 1: Adjusted top padding
     <footer id="contact" className="bg-[#020202] pt-16 md:pt-24 pb-0 overflow-hidden border-t border-white/5 relative z-10 font-sans">
       
       {/* =========================================
@@ -28,9 +17,9 @@ const Footer = () => {
           {/* Left Side: Call to Action */}
           <div className="lg:col-span-6 space-y-6 md:space-y-8 text-center lg:text-left">
             <h4 className="text-amber-500 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.4em] md:tracking-[0.6em]">Next Step</h4>
-            {/* ADJUSTMENT 2: Responsive Headline (text-4xl -> text-7xl) */}
+            {/* ADJUSTMENT 2: Responsive Headline */}
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
-              Let's craft your <br /> <span className="italic">Visual Legacy.</span>
+              Let's craft your videos<br /> <span className="italic">Visual Legacy.</span>
             </h2>
             <div className="pt-4 md:pt-6">
               <a 
@@ -67,7 +56,7 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Time / Status - Hidden on small mobile to save space, visible on MD+ */}
+            {/* Time / Status */}
             <div className="space-y-4 hidden md:block text-right lg:text-left">
               <p className="text-white/20 font-mono text-[9px] uppercase tracking-widest">Local Time</p>
               <p className="text-white font-black uppercase text-xl italic tracking-tighter">
@@ -83,35 +72,9 @@ const Footer = () => {
       </div>
 
       {/* =========================================
-          VIDEO TEXT MASK SECTION
+          IMPORTED ENTRY COMPONENT (Video Part)
       ========================================= */}
-      {/* ADJUSTMENT 3: Height changed to 30vh on mobile, 60vh on desktop */}
-      <div className="relative w-full h-[30vh] md:h-[60vh] flex items-center justify-center overflow-hidden bg-black">
-        
-        {/* VIDEO LAYER */}
-        <video 
-          ref={videoRef}
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-80"
-        >
-          <source src="/Madeira  Cinematic FPV - Ellis van Jason (1080p, h264).mov" type="video/mp4" />
-        </video>
-
-        {/* MASK LAYER - Adjusted blend mode logic for better mobile contrast if needed */}
-        <div className="absolute inset-0 bg-[#020202] mix-blend-multiply flex flex-col items-center justify-center select-none z-10">
-          <h1 className="text-[15vw] md:text-[18vw] font-black text-white uppercase leading-none tracking-tighter text-center">
-            GAME OF <br className="md:hidden" /> FRAMES
-          </h1>
-        </div>
-        
-        {/* Lines Overlay */}
-        <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-20 opacity-30">
-             <div className="w-[90%] border-t border-b border-white/20 h-16 md:h-24 absolute"></div>
-        </div>
-      </div>
+     
 
 
       {/* =========================================
@@ -120,7 +83,7 @@ const Footer = () => {
       <div className="bg-[#020202] py-6 md:py-8 border-t border-white/5 relative z-20">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
           
-          {/* Copyright - Centered on mobile */}
+          {/* Copyright */}
           <div className="flex flex-col md:flex-row gap-2 md:gap-10 text-center md:text-left">
             <p className="text-[8px] md:text-[9px] text-white/30 uppercase tracking-[0.3em] md:tracking-[0.4em]">© 2025{currentYear} All Rights Reserved </p>
             <p className="text-[8px] md:text-[9px] text-white/30 uppercase tracking-[0.3em] md:tracking-[0.4em]">Designed by Yashraj Vijaysing Rajput</p>
